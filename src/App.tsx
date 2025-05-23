@@ -5,6 +5,7 @@ import Toolbar from './components/Toolbar'
 import ObjectHierarchy from './components/ObjectHierarchy'
 import KeyboardController from './components/KeyboardController'
 import StatusBar from './components/StatusBar'
+import PropertiesPanel from './components/PropertiesPanel'
 import './styles/App.css'
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
         <div className="top-toolbar">
           <Toolbar />
         </div>
+
+        {/* Properties Panel */}
+        <PropertiesPanel />
 
         {/* 3D Canvas */}
         <div className="canvas-container">
