@@ -1,0 +1,603 @@
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Left Panel */
+.left-panel {
+  width: 300px;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Top Toolbar */
+.top-toolbar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.canvas-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.toolbar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(40, 40, 40, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.toolbar h3 {
+  margin: 0 0 8px 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tool-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tool-section label {
+  color: #cccccc;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.tool-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.tool-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  text-align: center;
+}
+
+.tool-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.tool-button.active {
+  background: #007acc;
+  border-color: #007acc;
+}
+
+.object-type-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.object-type-selector select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.object-type-selector select option {
+  background: #2a2a2a;
+  color: #ffffff;
+}
+
+.file-operations {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  text-align: center;
+}
+
+.file-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.file-button.danger {
+  background: rgba(220, 38, 127, 0.2);
+  border-color: rgba(220, 38, 127, 0.5);
+}
+
+.file-button.danger:hover {
+  background: rgba(220, 38, 127, 0.3);
+}
+
+/* Autosave section styles */
+.autosave-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(0, 122, 255, 0.1);
+  border: 1px solid rgba(0, 122, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.autosave-status {
+  color: #4ade80;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.last-saved {
+  color: #cccccc;
+  font-size: 11px;
+}
+
+.save-button {
+  background: rgba(0, 122, 255, 0.2);
+  border: 1px solid rgba(0, 122, 255, 0.5);
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 11px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.save-button:hover {
+  background: rgba(0, 122, 255, 0.3);
+  border-color: rgba(0, 122, 255, 0.7);
+}
+
+/* Object Hierarchy Styles */
+.object-hierarchy {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(30, 30, 30, 0.95);
+}
+
+.hierarchy-header {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hierarchy-header h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hierarchy-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.create-group-btn {
+  background: rgba(0, 122, 255, 0.2);
+  border: 1px solid rgba(0, 122, 255, 0.5);
+  border-radius: 6px;
+  padding: 4px 8px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 11px;
+}
+
+.create-group-btn:hover:not(:disabled) {
+  background: rgba(0, 122, 255, 0.3);
+}
+
+.create-group-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hierarchy-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.hierarchy-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.hierarchy-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.hierarchy-item.selected {
+  background: rgba(0, 122, 255, 0.2);
+}
+
+.hierarchy-item-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  padding: 4px 8px;
+}
+
+.object-checkbox {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.object-icon,
+.group-icon {
+  font-size: 14px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.object-name,
+.group-name {
+  color: #ffffff;
+  font-size: 12px;
+  flex: 1;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.object-name:hover,
+.group-name:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.name-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 122, 255, 0.5);
+  border-radius: 4px;
+  padding: 2px 4px;
+  color: #ffffff;
+  font-size: 12px;
+  flex: 1;
+}
+
+.object-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.hierarchy-item:hover .object-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  color: #cccccc;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: all 0.15s ease;
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.action-btn.danger:hover {
+  background: rgba(220, 38, 127, 0.3);
+  color: #ff6b9d;
+}
+
+.collapse-btn {
+  background: transparent;
+  border: none;
+  color: #cccccc;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hierarchy-group {
+  margin-bottom: 4px;
+}
+
+.hierarchy-group.selected {
+  background: rgba(0, 122, 255, 0.1);
+  border-radius: 4px;
+}
+
+.group-children {
+  margin-left: 16px;
+}
+
+.empty-state {
+  color: #666666;
+  font-size: 12px;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+
+/* Dialog Styles */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.dialog {
+  background: rgba(40, 40, 40, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  min-width: 300px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dialog h4 {
+  margin: 0 0 16px 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.group-name-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.group-name-input:focus {
+  outline: none;
+  border-color: rgba(0, 122, 255, 0.5);
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.dialog-actions button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px 16px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+}
+
+.dialog-actions button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dialog-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.properties-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(40, 40, 40, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 250px;
+  max-width: 300px;
+  z-index: 1000;
+}
+
+.properties-panel h3 {
+  margin: 0 0 12px 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.property-group {
+  margin-bottom: 16px;
+}
+
+.property-group:last-child {
+  margin-bottom: 0;
+}
+
+.property-group label {
+  display: block;
+  color: #cccccc;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.property-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px;
+  color: #ffffff;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.property-input:focus {
+  outline: none;
+  border-color: #007acc;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.vector-input {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px;
+}
+
+.vector-input input {
+  text-align: center;
+}
+
+.color-input {
+  width: 100%;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.status-bar {
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  color: #cccccc;
+  font-size: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 32px;
+}
+
+.status-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mode-indicator {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.selected-object {
+  color: #fbbf24;
+  font-size: 11px;
+}
+
+.status-right {
+  display: flex;
+  align-items: center;
+}
+
+.keyboard-shortcuts {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.shortcut {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #888;
+}
+
+.shortcut kbd {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: monospace;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .toolbar {
+    left: 10px;
+    top: 10px;
+    min-width: 160px;
+  }
+  
+  .properties-panel {
+    right: 10px;
+    top: 10px;
+    min-width: 200px;
+  }
+  
+  .tool-buttons {
+    grid-template-columns: 1fr;
+  }
+} 

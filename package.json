@@ -1,0 +1,65 @@
+{
+  "name": "threejs-3d-map-editor",
+  "version": "1.0.0",
+  "description": "Professional 3D Map Editor built with Three.js, React Three Fiber & TypeScript. Create game levels, interactive maps, and 3D environments with Minecraft-style building, WebGL rendering, and real-time editing tools.",
+  "keywords": [
+    "threejs",
+    "three.js",
+    "3d-editor",
+    "map-editor",
+    "level-design",
+    "react-three-fiber",
+    "webgl",
+    "game-development",
+    "3d-modeling",
+    "typescript",
+    "react",
+    "vite",
+    "browser-based",
+    "minecraft-style",
+    "level-editor",
+    "3d-tools",
+    "webgl-editor",
+    "game-tools",
+    "interactive-3d",
+    "scene-editor"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whferr/threejs-3d-map-editor.git"
+  },
+  "homepage": "https://whferr.github.io/threejs-3d-map-editor",
+  "bugs": {
+    "url": "https://github.com/whferr/threejs-3d-map-editor/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "dependencies": {
+    "@types/three": "^0.158.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.158.0",
+    "@react-three/fiber": "^8.15.11",
+    "@react-three/drei": "^9.92.7",
+    "leva": "^0.9.35",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+} 
